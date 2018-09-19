@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="plan.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<center>
+<h1> Plan Your Semester</h1>
+
+    <input type="text" id="mydep" placeholder="Department">
+    <input type="text" id="myclass" placeholder="Course Number">
+    <input type="text" id="credits" placeholder="Credits">
+    <button onclick="addCourse()">Add</button>
+
+    </center>
+ <body background=white>
+     
+      
+      <div class="dropdown">
+                <button class="dropbtn">Select Semester</button>
+        
+        
+                <div class="dropdown-content">
+                    <ul>
+                    <a onclick="changeF18()"> Fall 2018 </a> <br>
+                    <a onclick="changeW19()"> Winter 2019 </a> <br>
+                    <a onclick="changeF19()"> Fall 2019 </a> <br>
+                    <a onclick="changeW20()"> Winter 2020 </a> <br>
+                    <a onclick="changeF20()"> Fall 2020 </a> <br>
+                    <a onclick="changeW21()"> Winter 2021 </a> <br>
+                    <a onclick="changeF21()"> Fall 2021 </a> <br>
+                    <a onclick="changeW22()"> Winter 2022 </a> <br>
+                    </ul>
+                </div>
+            </div>
+            
+            
+        
+            
+            
+            <h1 id="semester"></h1>
+            <script type="text/javascript">
+            function changeF18(event){
+                document.getElementById('semester').innerHTML = "Fall 2018"
+                //var newText = document.createTextNode(event);
+                //newItem.appendChild(newText)
+            }
+            function changeW19(event){
+                document.getElementById('semester').innerHTML = "Winter 2019"
+                //var newText = document.createTextNode(event);
+                //newItem.appendChild(newText)
+            }
+            function changeF19(event){
+                document.getElementById('semester').innerHTML = "Fall 2019"
+                //var newText = document.createTextNode(event);
+                //newItem.appendChild(newText)
+            }
+            function changeW20(event){
+                document.getElementById('semester').innerHTML = "Winter 2020"
+                //var newText = document.createTextNode(event);
+                //newItem.appendChild(newText)
+            }
+            function changeF20(event){
+                document.getElementById('semester').innerHTML = "Fall 2020"
+                //var newText = document.createTextNode(event);
+                //newItem.appendChild(newText)
+            }
+            function changeW21(event){
+                document.getElementById('semester').innerHTML = "Winter 2021"
+                //var newText = document.createTextNode(event);
+                //newItem.appendChild(newText)
+            }
+            function changeF21(event){
+                document.getElementById('semester').innerHTML = "Fall 2021"
+                //var newText = document.createTextNode(event);
+                //newItem.appendChild(newText)
+            }
+            function changeW22(event){
+                document.getElementById('semester').innerHTML = "Winter 2022"
+                //var newText = document.createTextNode(event);
+                //newItem.appendChild(newText)
+            }
+        </script>
+            
+    <script>
+            var totalCredits;
+            var mydep
+            var myclass
+            var credits
+            var tooManyCredits = "You cannot add this course because you will be taking too many credits.";
+            
+                function addCourse(event) {
+                     mydep =  document.getElementById("mydep").value + '\xa0';
+                     myclass = document.getElementById("myclass").value + '\xa0';
+                     credits =  document.getElementById("credits").value;
+                     
+                    
+            
+                    totalCredits = totalCredits + credits;
+                    if (totalCredits > 18) {
+                        alert(tooManyCredits);
+                        return;
+                    }
+                    console.log(mydep + "\t" + myclass + "\t" + credits);
+                    add_list(mydep + myclass + credits);
+                    document.getElementById('demo').value=null;
+                    document.getElementById('mydep').value=null;
+                    document.getElementById('myclass').value=null;
+                    document.getElementById('credits').value=null;
+                    
+                }
+                
+                function add_list(mydep){
+                    var list = document.getElementById('t1');
+                    var newItem = document.createElement('li');
+                    var newText = document.createTextNode(mydep);
+                    list.appendChild(newItem)
+                    newItem.appendChild(newText)
+                }
+                
+                function functionFinish(event) {
+                        console.log(totalCredits);
+                        if (totalCredits < 12) {
+                            var message = "Note that by continuing you will be taking less than 12 credits, and will therefore be attending part-time."
+                            alert(message);
+                            
+                        }
+                    }
+                
+            </script>
+
+<center>
+            <p>
+                Add a Class
+            </p>
+        </center>
+            
+     <div class="container-fluid">
+        
+  <div class="wrapper">
+      
+  <div>
+      
+      <p>
+          <ul style="list-style-type:none" id="t1">
+              <li id="demo"></li>
+          </ul>
+      </p>
+      
+    </div>
+    </div>
+   
+</div>
+<form>
+ 
+            <button onclick="functionFinish()">Refresh</button>    
+ </form>
+
+ </body>
+</html>
